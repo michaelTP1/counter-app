@@ -43,9 +43,16 @@ class App extends Component {
   };
 
   render() {
+    var totalProducts=0;
+    this.state.counters.forEach(counter => {
+      totalProducts+=counter.value;
+    });
     return (
       <React.Fragment>
-        <NavBar totalCounters={this.state.counters.filter(c=>c.value>0).length}/>
+        
+        <NavBar totalCounters={this.state.counters.filter(c=>c.value>0).length}
+        totalProducts={totalProducts}
+        />
         <main className="container">
           <Counters
           counters={this.state.counters}
